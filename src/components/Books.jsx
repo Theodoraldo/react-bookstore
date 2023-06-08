@@ -1,4 +1,3 @@
-import React from 'react';
 import NewBooks from './NewBooks';
 import ShowBooks from './ShowBooks';
 
