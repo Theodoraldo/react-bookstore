@@ -1,0 +1,16 @@
+.bookstore-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookstore-nav-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.book-head {
+  color: #0d95ff;
+}
