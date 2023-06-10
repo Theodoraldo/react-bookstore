@@ -1,39 +1,36 @@
 import PropTypes from 'prop-types';
 import './styles/BookItem.css';
 
-const BookItem = ({ book }) => {
-  return (
-    <>
-      <div className="item-container">
+const BookItem = ({ book }) => (
+  <>
+    <div className="item-container">
+      <div>
         <div>
-          <div>
-            <p>{book.type}</p>
-            <h3>{book.title}</h3>
-            <p>{book.author}</p>
-          </div>
-          <div>
-            <button>Comment</button>
-            <button>Remove</button>
-            <button>Edit</button>
-          </div>
+          <p>{book.type}</p>
+          <h3>{book.title}</h3>
+          <p>{book.author}</p>
         </div>
         <div>
-          <p>Progress</p>
-          <div>
-            <div>{book.percentage}%</div>
-            <div>Completed</div>
-          </div>
-        </div>
-        <div>
-          <p>Current Chapter</p>
-          <p>{book.chapter}</p>
-          <button>UPDATE PROGRESS</button>
+          <button type="button">Comment</button>
+          <button type="button">Remove</button>
+          <button type="button">Edit</button>
         </div>
       </div>
-    </>
-  );
-};
-
+      <div>
+        <p>Progress</p>
+        <div>
+          <div>{book.percentage}</div>
+          <div>Completed</div>
+        </div>
+      </div>
+      <div>
+        <p>Current Chapter</p>
+        <p>{book.chapter}</p>
+        <button type="button">UPDATE PROGRESS</button>
+      </div>
+    </div>
+  </>
+);
 BookItem.propTypes = {
   book: PropTypes.objectOf(
     PropTypes.shape({
@@ -42,7 +39,7 @@ BookItem.propTypes = {
       author: PropTypes.string.isRequired,
       percentage: PropTypes.number.isRequired,
       chapter: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
 };
 

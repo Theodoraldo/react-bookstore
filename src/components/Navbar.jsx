@@ -9,7 +9,7 @@ export default function Navbar() {
         <NavLink to="/">Book</NavLink>
         <NavLink to="categories">Category</NavLink>
       </div>
-      <button>Icon</button>
+      <button type="button">Icon</button>
     </div>
   );
 }

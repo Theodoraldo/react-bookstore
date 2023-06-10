@@ -5,7 +5,7 @@ export default function NewBooks() {
       <form>
         <input type="text" placeholder="Book Title" />
         <input type="text" placeholder="Book Author" />
-        <button>ADD BOOK</button>
+        <button type="button">ADD BOOK</button>
       </form>
     </div>
   );
