@@ -14,18 +14,17 @@ const BookItem = () => {
   return (
     <div>
       {books.map((book) => (
-        <div key={book.item_id}>
+        <div key={book.item_id} className="section">
           <div className="card-card">
-            <div className="book-card">
-              <h3>{book.title}</h3>
-              <p>Author</p>
-              <p>{book.author}</p>
-            </div>
-            <div>
-              <button type="button" onClick={() => removeOldBook(book.item_id)}>
-                Remove
-              </button>
-            </div>
+            <h3>{book.title}</h3>
+            <p>{book.author}</p>
+            <button
+              className="remove-btn"
+              type="button"
+              onClick={() => removeOldBook(book.item_id)}
+            >
+              Remove
+            </button>
           </div>
         </div>
       ))}

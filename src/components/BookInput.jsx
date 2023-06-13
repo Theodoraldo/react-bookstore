@@ -8,7 +8,7 @@ export default function NewBooks() {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
-  const handleAddNewBook = () => {
+  const handleAddNewBook = (e) => {
     const newBook = {
       item_id: nanoid(),
       title: title,
@@ -16,10 +16,11 @@ export default function NewBooks() {
       category: 'Fiction',
     };
 
-    dispatch(addBook(newBook));
-
-    setTitle('');
-    setAuthor('');
+    if (title !== '' && author !== '') {
+      dispatch(addBook(newBook));
+      setTitle('');
+      setAuthor('');
+    }
   };
 
   return (
