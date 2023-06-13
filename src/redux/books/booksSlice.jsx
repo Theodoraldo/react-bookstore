@@ -28,8 +28,12 @@ const booksSlice = createSlice({
       state.push(action.payload);
     },
     removeBook: (state, action) => {
-      const bookIndex = action.payload;
-      state = state.filter((book) => book.id !== bookIndex);
+      const bookIndex = state.findIndex(
+        (book) => book.item_id === action.payload
+      );
+      if (bookIndex !== -1) {
+        state.splice(bookIndex, 1);
+      }
     },
   },
 });
