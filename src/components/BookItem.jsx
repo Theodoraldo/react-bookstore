@@ -1,46 +1,36 @@
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeBook } from '../redux/books/booksSlice';
 import './styles/BookItem.css';
 
-const BookItem = ({ book }) => (
-  <>
-    <div className="item-container">
-      <div>
-        <div>
-          <p>{book.type}</p>
-          <h3>{book.title}</h3>
-          <p>{book.author}</p>
+const BookItem = () => {
+  const books = useSelector((state) => state.books);
+
+  const dispatch = useDispatch();
+
+  const removeOldBook = (itemId) => {
+    dispatch(removeBook(itemId));
+  };
+
+  return (
+    <div>
+      {books.map((book) => (
+        <div key={book.item_id}>
+          <div className="card-card">
+            <div className="book-card">
+              <h3>{book.title}</h3>
+              <p>Author</p>
+              <p>{book.author}</p>
+            </div>
+            <div>
+              <button type="button" onClick={() => removeOldBook(book.item_id)}>
+                Remove
+              </button>
+            </div>
+          </div>
         </div>
-        <div>
-          <button type="button">Comment</button>
-          <button type="button">Remove</button>
-          <button type="button">Edit</button>
-        </div>
-      </div>
-      <div>
-        <p>Progress</p>
-        <div>
-          <div>{book.percentage}</div>
-          <div>Completed</div>
-        </div>
-      </div>
-      <div>
-        <p>Current Chapter</p>
-        <p>{book.chapter}</p>
-        <button type="button">UPDATE PROGRESS</button>
-      </div>
+      ))}
     </div>
-  </>
-);
-BookItem.propTypes = {
-  book: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-      percentage: PropTypes.number.isRequired,
-      chapter: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  );
 };
 
 export default BookItem;

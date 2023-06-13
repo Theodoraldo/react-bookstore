@@ -1,6 +1,13 @@
-.item-container {
+.book-card {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  gap: 30px;
+  gap: 70px;
+}
+
+.card-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
 }
