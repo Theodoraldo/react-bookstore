@@ -53,6 +53,7 @@ const booksSlice = createSlice({
     builder.addCase(getBooks.fulfilled, (state, action) => {
       state.isLoading = false;
       state.books = action.payload;
+      getBooks(action.payload);
     });
 
     builder.addCase(getBooks.rejected, (state, action) => {
@@ -85,5 +86,4 @@ const booksSlice = createSlice({
   reducers: {},
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
 export default booksSlice.reducer;
