@@ -10,6 +10,7 @@ export default function NewBooks() {
   const [category, setCategory] = useState('');
 
   const handleAddNewBook = (e) => {
+    e.preventDefault();
     const newBook = {
       item_id: nanoid(),
       title: title,
