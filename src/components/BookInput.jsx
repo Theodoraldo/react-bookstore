@@ -1,25 +1,27 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
-import { addBook } from '../redux/books/booksSlice';
+import { postBook } from '../redux/books/booksSlice';
 
 export default function NewBooks() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState('');
 
   const handleAddNewBook = (e) => {
     const newBook = {
       item_id: nanoid(),
       title: title,
       author: author,
-      category: 'Fiction',
+      category: category,
     };
 
-    if (title !== '' && author !== '') {
-      dispatch(addBook(newBook));
+    if (title !== '' && author !== '' && category !== '') {
+      dispatch(postBook(newBook));
       setTitle('');
       setAuthor('');
+      setCategory('');
     }
   };
 
@@ -38,6 +40,12 @@ export default function NewBooks() {
           placeholder="Book Author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Book Category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
         />
         <button type="button" onClick={handleAddNewBook}>
           ADD BOOK
