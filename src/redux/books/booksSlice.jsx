@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, thunkAPI } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const URL =
@@ -14,19 +14,22 @@ export const getBooks = createAsyncThunk('books/getBooks', async (thunkAPI) => {
   }
 });
 
-export const postBook = createAsyncThunk('books/postBook', async (NewBooks) => {
-  try {
-    const response = await axios.post(URL, NewBooks);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return thunkAPI.rejectWithVAlue('Oooops, post request failed');
+export const postBook = createAsyncThunk(
+  'books/postBook',
+  async (NewBooks, thunkAPI) => {
+    try {
+      const response = await axios.post(URL, NewBooks);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithVAlue('Oooops, post request failed');
+    }
   }
-});
+);
 
 export const deleteBook = createAsyncThunk(
   'books/deleteBook',
-  async (itemId) => {
+  async (itemId, thunkAPI) => {
     try {
       const response = await axios.delete(`${URL}/${itemId}`, itemId);
       return response.data;
