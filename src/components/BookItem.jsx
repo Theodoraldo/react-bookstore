@@ -9,7 +9,7 @@ const BookItem = () => {
 
   useEffect(() => {
     dispatch(getBooks());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
