@@ -31,7 +31,7 @@ const BookItem = () => {
                   Comment
                 </button>
                 <div className="trans comment-delete-edit">
-                  <div class="vertical-line-1"></div>
+                  <div className="vertical-line-1"></div>
                   <button
                     className="btn"
                     type="button"
@@ -39,7 +39,7 @@ const BookItem = () => {
                   >
                     Remove
                   </button>
-                  <div class="vertical-line-1"></div>
+                  <div className="vertical-line-1"></div>
                 </div>
                 <button type="button" className="btn">
                   Edit
@@ -52,7 +52,7 @@ const BookItem = () => {
                 <div className="trans completed">Completed</div>
               </div>
             </div>
-            <div class="vertical-line-2"></div>
+            <div className="vertical-line-2"></div>
             <div className="trans">
               <p className="trans current">Current Chapter</p>
               <p>{book.chapter}</p>
