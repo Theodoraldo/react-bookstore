@@ -4,25 +4,39 @@ import axios from 'axios';
 const URL =
   'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/z7bqE3wKlJii9rtzhvHF/books';
 
-export const getBooks = createAsyncThunk('books/getBooks', async (thunkAPI) => {
-  try {
-    const response = await axios.get(URL);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return thunkAPI.rejectWithVAlue('Oooops, fetch request failed');
-  }
-});
-
-export const postBook = createAsyncThunk(
-  'books/postBook',
-  async (NewBooks, thunkAPI) => {
+export const getBooks = createAsyncThunk(
+  'books/getBooks',
+  async (_, thunkAPI) => {
     try {
-      const response = await axios.post(URL, NewBooks);
+      const response = await axios(URL);
       return response.data;
     } catch (error) {
-      console.log(error);
-      return thunkAPI.rejectWithVAlue('Oooops, post request failed');
+      return thunkAPI.rejectWithValue(
+        'An error has occurred while getting data'
+      );
+    }
+  }
+);
+
+export const postBook = createAsyncThunk(
+  'addBooks/addBook',
+  async (book, thunkAPI) => {
+    try {
+      const response = await axios(URL, {
+        method: 'POST',
+        data: JSON.stringify(book),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+
+      if (response.status === 201) {
+        thunkAPI.dispatch(getBooks());
+        return null;
+      }
+      return null;
+    } catch (error) {
+      return thunkAPI.rejectWithValue('Failed to add book');
     }
   }
 );
@@ -31,11 +45,20 @@ export const deleteBook = createAsyncThunk(
   'books/deleteBook',
   async (itemId, thunkAPI) => {
     try {
-      const response = await axios.delete(`${URL}/${itemId}`, itemId);
-      return response.data;
+      const response = await axios(`${URL}/${itemId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+
+      if (response.status === 201) {
+        thunkAPI.dispatch(getBooks());
+        return null;
+      }
+      return null;
     } catch (error) {
-      console.log(error);
-      return thunkAPI.rejectWithVAlue('Oooops, post request failed');
+      return thunkAPI.rejectWithValue('Failed to delete book');
     }
   }
 );
@@ -47,46 +70,47 @@ const booksSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  extraReducers: (builder) => {
-    builder.addCase(getBooks.pending, (state) => {
+  extraReducers: {
+    [getBooks.pending]: (state) => {
       state.isLoading = true;
-      state.error = null;
-    });
+    },
 
-    builder.addCase(getBooks.fulfilled, (state, action) => {
+    [getBooks.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.books = action.payload;
-      getBooks(action.payload);
-    });
+    },
 
-    builder.addCase(getBooks.rejected, (state, action) => {
+    [getBooks.rejected]: (state) => {
       state.isLoading = false;
-      state.error = action.error.message;
-    });
+      state.errMsg = true;
+    },
 
-    builder.addCase(postBook.pending, (state) => {
-      state.isLoading = true;
-      state.error = null;
-    });
+    [postBook.pending]: (state) => {
+      state.addMsg = true;
+    },
 
-    builder.addCase(postBook.fulfilled, (state, action) => {
-      state.isLoading = false;
+    [postBook.fulfilled]: (state, action) => {
+      state.addMsg = false;
       state.books = action.payload;
-      state.error = false;
-    });
+    },
 
-    builder.addCase(postBook.rejected, (state, action) => {
-      state.isLoading = false;
-      state.error = action.error.message;
-    });
+    [postBook.rejected]: (state) => {
+      state.addMsg = false;
+    },
 
-    builder.addCase(deleteBook.fulfilled, (state, action) => {
-      state.isLoading = false;
+    [deleteBook.pending]: (state) => {
+      state.delMsg = true;
+    },
+
+    [deleteBook.fulfilled]: (state, action) => {
+      state.delMsg = false;
       state.books = action.payload;
-      state.error = false;
-    });
+    },
+
+    [deleteBook.pending]: (state) => {
+      state.delMsg = false;
+    },
   },
-  reducers: {},
 });
 
 export default booksSlice.reducer;
