@@ -1,13 +1,99 @@
-.book-card {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 70px;
-}
-
 .card-card {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20%;
+  justify-content: space-between;
+  padding: 20px;
+  color: rgb(65, 59, 59);
+  margin: 20px auto;
+  width: 60%;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 10px 15px 7px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  background-color: transparent;
+  color: rgb(154, 190, 221);
+  padding: 6px;
+  margin-right: 5px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.current {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.update-btn {
+  color: white;
+  background-color: rgb(2, 144, 255);
+  border: 1px solid rgb(2, 144, 255);
+  font-size: 12px;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+.cls-author {
+  color: rgb(154, 190, 221);
+  font-size: 12px;
+}
+
+.completed {
+  color: rgb(204, 204, 204);
+  font-size: 14px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.trans {
+  background-color: white;
+}
+
+.alert {
+  width: 50%;
+  padding: 12px 16px;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  margin: 12px auto;
+  font-size: 16px;
+}
+
+.alert.alert-info {
+  background-color: rgba(217, 237, 247, 1);
+  color: rgba(49, 112, 143, 1);
+  border-color: rgba(126, 182, 193, 1);
+}
+
+.alert.alert-danger {
+  background-color: rgba(248, 215, 218, 1);
+  border-color: rgba(220, 53, 69, 1);
+  color: rgba(114, 28, 36, 1);
+}
+
+.category {
+  color: rgb(159, 159, 159);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.vertical-line-1 {
+  border-left: 1px solid rgb(230, 231, 235);
+  height: 25px;
+  background-color: transparent;
+  margin: 5px;
+}
+
+.vertical-line-2 {
+  border-left: 1px solid rgb(230, 231, 235);
+  height: 50px;
+  background-color: transparent;
+}
+
+.comment-delete-edit {
+  display: flex;
 }

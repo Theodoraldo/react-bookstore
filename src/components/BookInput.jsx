@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { postBook } from '../redux/books/booksSlice';
+import './styles/BookInput.css';
 
 export default function NewBooks() {
   const dispatch = useDispatch();
@@ -27,33 +28,40 @@ export default function NewBooks() {
   };
 
   return (
-    <div>
-      <h2>ADD NEW BOOK</h2>
-      <form>
+    <>
+      <form className="form-input">
+        <h2 className="form-header">ADD NEW BOOK</h2>
         <input
+          className="form-title"
           type="text"
           placeholder="Book Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <input
+          className="form-author"
           type="text"
           placeholder="Book Author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
         />
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-            <option value="Action">Action</option>
-            <option value="Science Fiction">Science Fiction</option>
-            <option value="Series">Series</option>
-            <option value="Drama">Drama</option>
-            <option value="Economy">Economy</option>
-            <option value="Comedy">Comedy</option>
-          </select>
-        <button type="button" onClick={handleAddNewBook}>
+        <select
+          className="form-category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value=""></option>
+          <option value="Action">Action</option>
+          <option value="Science Fiction">Science Fiction</option>
+          <option value="Series">Series</option>
+          <option value="Drama">Drama</option>
+          <option value="Economy">Economy</option>
+          <option value="Comedy">Comedy</option>
+        </select>
+        <button className="form-btn" type="button" onClick={handleAddNewBook}>
           ADD BOOK
         </button>
       </form>
-    </div>
+    </>
   );
 }
