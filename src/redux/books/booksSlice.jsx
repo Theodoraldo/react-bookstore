@@ -82,33 +82,35 @@ const booksSlice = createSlice({
 
     [getBooks.rejected]: (state) => {
       state.isLoading = false;
-      state.errMsg = true;
+      state.error = true;
     },
 
     [postBook.pending]: (state) => {
-      state.addMsg = true;
+      state.isLoading = true;
     },
 
     [postBook.fulfilled]: (state, action) => {
-      state.addMsg = false;
+      state.isLoading = true;
       state.books = action.payload;
     },
 
     [postBook.rejected]: (state) => {
-      state.addMsg = false;
+      state.isLoading = false;
+      state.error = true;
     },
 
     [deleteBook.pending]: (state) => {
-      state.delMsg = true;
+      state.isLoading = true;
     },
 
     [deleteBook.fulfilled]: (state, action) => {
-      state.delMsg = false;
+      state.isLoading = true;
       state.books = action.payload;
     },
 
-    [deleteBook.pending]: (state) => {
-      state.delMsg = false;
+    [deleteBook.rejected]: (state) => {
+      state.isLoading = false;
+      state.error = true;
     },
   },
 });
