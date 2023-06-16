@@ -29,13 +29,13 @@
 .form-title:focus,
 .form-author:focus,
 .form-category:focus {
-  border: 1px solid rgb(13, 149, 255);
+  border: 1px solid rgb(2, 144, 255);
 }
 
 .form-btn {
   padding: 10px;
   border: none;
-  background-color: rgb(13, 149, 255);
+  background-color: rgb(2, 144, 255);
   color: white;
   font-weight: bold;
   font-size: 16px;

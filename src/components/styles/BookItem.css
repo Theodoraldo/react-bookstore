@@ -12,9 +12,8 @@
 }
 
 .btn {
-  background-color: rgb(13, 149, 255);
-  color: white;
-  font-weight: bold;
+  background-color: transparent;
+  color: rgb(154, 190, 221);
   padding: 6px;
   margin-right: 5px;
   border-radius: 5px;
@@ -22,8 +21,32 @@
   outline: none;
 }
 
+.current {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.update-btn {
+  color: white;
+  background-color: rgb(2, 144, 255);
+  border: 1px solid rgb(2, 144, 255);
+  font-size: 12px;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+.cls-author {
+  color: rgb(154, 190, 221);
+  font-size: 12px;
+}
+
+.completed {
+  color: rgb(204, 204, 204);
+  font-size: 14px;
+}
+
 .btn:hover {
-  border: 1px solid transparent;
+  cursor: pointer;
 }
 
 .trans {
@@ -50,4 +73,27 @@
   background-color: rgba(248, 215, 218, 1);
   border-color: rgba(220, 53, 69, 1);
   color: rgba(114, 28, 36, 1);
+}
+
+.category {
+  color: rgb(159, 159, 159);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.vertical-line-1 {
+  border-left: 1px solid rgb(230, 231, 235);
+  height: 25px;
+  background-color: transparent;
+  margin: 5px;
+}
+
+.vertical-line-2 {
+  border-left: 1px solid rgb(230, 231, 235);
+  height: 50px;
+  background-color: transparent;
+}
+
+.comment-delete-edit {
+  display: flex;
 }

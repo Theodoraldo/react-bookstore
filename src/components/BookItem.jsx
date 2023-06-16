@@ -23,14 +23,15 @@ const BookItem = () => {
         Object.entries(books).map(([itemId, book]) => (
           <div key={itemId} className="card-card">
             <div>
-              <div>
-                <p className="trans">{book[0].category}</p>
-                <h4 className="trans">{book[0].title}</h4>
-                <p className="trans">{book[0].author}</p>
-                <div className="trans">
-                  <button type="button" className="btn">
-                    Comment
-                  </button>
+              <p className="trans category">{book[0].category}</p>
+              <h4 className="trans">{book[0].title}</h4>
+              <p className="trans cls-author">{book[0].author}</p>
+              <div className="trans comment-delete-edit">
+                <button type="button" className="btn">
+                  Comment
+                </button>
+                <div className="trans comment-delete-edit">
+                  <div class="vertical-line-1"></div>
                   <button
                     className="btn"
                     type="button"
@@ -38,22 +39,24 @@ const BookItem = () => {
                   >
                     Remove
                   </button>
-                  <button type="button" className="btn">
-                    Edit
-                  </button>
+                  <div class="vertical-line-1"></div>
                 </div>
+                <button type="button" className="btn">
+                  Edit
+                </button>
               </div>
             </div>
             <div>
               <p className="trans">50%</p>
               <div>
-                <div className="trans">Completed</div>
+                <div className="trans completed">Completed</div>
               </div>
             </div>
+            <div class="vertical-line-2"></div>
             <div className="trans">
-              <p className="trans">Current Chapter</p>
+              <p className="trans current">Current Chapter</p>
               <p>{book.chapter}</p>
-              <button className="btn" type="button">
+              <button className="update-btn" type="button">
                 UPDATE PROGRESS
               </button>
             </div>

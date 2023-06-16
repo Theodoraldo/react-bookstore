@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <div className="bookstore-nav">
       <div className="nav-left">
-        <h1 className="transparent">Bookstore CMS</h1>
+        <h1 className="transparent h-font">Bookstore CMS</h1>
         <NavLink to="/">Book</NavLink>
         <NavLink to="categories">Category</NavLink>
       </div>
