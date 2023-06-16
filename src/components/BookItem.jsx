@@ -21,7 +21,7 @@ const BookItem = () => {
       )}
       {!isLoading &&
         Object.entries(books).map(([itemId, book]) => (
-          <div className="card-card">
+          <div key={itemId} className="card-card">
             <div>
               <div>
                 <p className="trans">{book[0].category}</p>
