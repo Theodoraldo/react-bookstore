@@ -17,26 +17,31 @@ const BookItem = () => {
       {error && <div>Ooops! Something happend whiles fetching data</div>}
       {!isLoading &&
         Object.entries(books).map(([itemId, book]) => (
-          <>
+          <div className="card-card">
             <div>
               <div>
-                <p>{book[0].type}</p>
-                <h3>{book[0].title}</h3>
+                <p>{book[0].category}</p>
+                <h4>{book[0].title}</h4>
                 <p>{book[0].author}</p>
-              </div>
-              <div>
-                <button type="button">Comment</button>
-                <button
-                  type="button"
-                  onClick={() => dispatch(deleteBook(itemId))}
-                >
-                  Remove
-                </button>
-                <button type="button">Edit</button>
+                <div>
+                  <button type="button" className="btn">
+                    Comment
+                  </button>
+                  <button
+                    className="btn"
+                    type="button"
+                    onClick={() => dispatch(deleteBook(itemId))}
+                  >
+                    Remove
+                  </button>
+                  <button type="button" className="btn">
+                    Edit
+                  </button>
+                </div>
               </div>
             </div>
             <div>
-              <p>Progress</p>
+              <p>50%</p>
               <div>
                 <div>{book.percentage}</div>
                 <div>Completed</div>
@@ -47,7 +52,7 @@ const BookItem = () => {
               <p>{book.chapter}</p>
               <button type="button">UPDATE PROGRESS</button>
             </div>
-          </>
+          </div>
         ))}
     </div>
   );

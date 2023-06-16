@@ -2,15 +2,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 40px;
+  background-color: white;
+  box-shadow: 0px 0px 19px -6px #0d95ff;
 }
 
-.bookstore-nav-left {
+.nav-left {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
+  background-color: white;
 }
 
-.book-head {
+.transparent {
   color: #0d95ff;
+  background-color: transparent;
+}
+
+a:active,
+a:disabled,
+a:link,
+a:visited {
+  background-color: transparent;
+  color: rgb(148, 139, 139);
+  text-decoration: none;
+  font-weight: bold;
 }
